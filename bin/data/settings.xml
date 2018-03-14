@@ -1,0 +1,9 @@
+<group>
+	<kinectV2_003884550547>
+		<minDistance>500</minDistance>
+		<maxDistance>6000</maxDistance>
+	</kinectV2_003884550547>
+	<pointCloudSteps>100</pointCloudSteps>
+	<pointSize>1</pointSize>
+	<connectionDistance>250</connectionDistance>
+</group>

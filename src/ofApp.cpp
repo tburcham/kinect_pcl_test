@@ -33,14 +33,14 @@ void ofApp::setup(){
         kinects[d]->open(deviceList[d].serial);
         panel.add(kinects[d]->params);
         
-        meshes[d].setMode(OF_PRIMITIVE_POINTS);
+        meshes[d].setMode(OF_PRIMITIVE_LINES_ADJACENCY);
         meshes[d].enableColors();
         meshes[d].enableIndices();
     }
     
-    panel.add(pointCloudSteps.setup("pointCloudSteps", 25, 1, 100));
+    panel.add(pointCloudSteps.setup("pointCloudSteps", 25, 1, 500));
     panel.add(pointSize.setup("pointSize", 1, 1, 10));
-    panel.add(connectionDistance.setup("connectionDistance", 20, 1, 250));
+    panel.add(connectionDistance.setup("connectionDistance", 20, 1, 500));
     
     panel.loadFromFile("settings.xml");
     
@@ -78,7 +78,7 @@ void ofApp::update(){
             
             // Let's add some lines!
            // float connectionDistance = 50;
-            /*int numVerts = meshes[d].getNumVertices();
+            int numVerts = meshes[d].getNumVertices();
             for (int a=0; a<numVerts; ++a) {
                 ofVec3f verta = meshes[d].getVertex(a);
                 for (int b=a+1; b<numVerts; ++b) {
@@ -91,7 +91,7 @@ void ofApp::update(){
                         meshes[d].addIndex(b);
                     }
                 }
-            }*/
+            }
             
             cout << meshes[d].getNumVertices();
             cout << "\n";
@@ -116,7 +116,7 @@ void ofApp::draw(){
         //texDepth[d].draw(200, shiftY);
         //texRGB[d].draw(210 + texDepth[d].getWidth(), shiftY, dwHD, dhHD);
         
-        ofSetColor(255, 255, 255);
+        ofSetColor(255, 255, 255, 128);
         
         //cout << meshes[d].getNumVertices();
         //cout << "\n";
@@ -129,7 +129,7 @@ void ofApp::draw(){
         ofTranslate(dwHD, dhHD, -1000); // center the points a bit
         ofEnableDepthTest();
         //mesh.drawVertices();
-        meshes[d].drawVertices();
+        meshes[d].draw();
 
         ofDisableDepthTest();
         ofPopMatrix();
